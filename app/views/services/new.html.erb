@@ -1,0 +1,19 @@
+<h1>Добавить услугу</h1>
+
+<%= form_with model: @service, local: true do |f| %>
+  <p>
+    <%= f.label :name, "Название услуги" %><br>
+    <%= f.text_field :name %>
+  </p>
+
+  <p>
+    <%= f.label :price, "Цена" %><br>
+    <%= f.number_field :price %>
+  </p>
+
+  <p>
+    <%= f.submit "Добавить услугу" %>
+  </p>
+<% end %>
+
+<%= link_to "Назад", services_path %>

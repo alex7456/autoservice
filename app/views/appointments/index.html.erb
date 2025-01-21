@@ -1,0 +1,29 @@
+<h1>Список записей</h1>
+
+<table border="1">
+  <tr>
+    <th>ID</th>
+    <th>Автомобиль</th>
+    <th>Клиент</th>
+    <th>Услуга</th>
+    <th>Дата записи</th>
+    <th>Статус</th>
+    <th>Действия</th>
+  </tr>
+  <% @appointments.each do |appointment| %>
+    <tr>
+      <td><%= appointment.id %></td>
+      <td><%= appointment.car.license_plate if appointment.car %></td>
+      <td><%= appointment.customer.name if appointment.customer %></td>
+      <td><%= appointment.service.name if appointment.service %></td>
+      <td><%= appointment.appointment_date %></td>
+      <td><%= appointment.status %></td>
+      <td>
+        <%= link_to "Редактировать", edit_appointment_path(appointment) %> |
+        <%= link_to "Удалить", appointment, method: :delete, data: { confirm: "Вы уверены?" } %>
+      </td>
+    </tr>
+  <% end %>
+</table>
+
+<%= link_to "Добавить запись", new_appointment_path %>

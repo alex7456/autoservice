@@ -25,4 +25,14 @@
   <body>
     <%= yield %>
   </body>
+  <nav>
+    <ul>
+      <li><%= link_to "Автомобили", cars_path %></li>
+      <li><%= link_to "Клиенты", customers_path %></li>
+      <li><%= link_to "Услуги", services_path %></li>
+      <li><%= link_to "Записи", appointments_path %></li>
+    </ul>
+  </nav>
+  <hr>
+
 </html>

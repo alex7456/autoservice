@@ -1,0 +1,24 @@
+<h1>Добавить клиента</h1>
+
+<%= form_with model: @customer, local: true do |f| %>
+  <p>
+    <%= f.label :name, "Имя клиента" %><br>
+    <%= f.text_field :name %>
+  </p>
+
+  <p>
+    <%= f.label :phone, "Телефон" %><br>
+    <%= f.text_field :phone %>
+  </p>
+
+  <p>
+    <%= f.label :email, "Email" %><br>
+    <%= f.email_field :email %>
+  </p>
+
+  <p>
+    <%= f.submit "Добавить клиента" %>
+  </p>
+<% end %>
+
+<%= link_to "Назад", customers_path %>
