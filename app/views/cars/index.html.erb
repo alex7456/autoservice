@@ -1,0 +1,22 @@
+<h1>Список автомобилей</h1>
+
+<table>
+  <tr>
+    <th>ID</th>
+    <th>Номер</th>
+    <th>Марка</th>
+    <th>Модель</th>
+    <th>Год</th>
+  </tr>
+  <% @cars.each do |car| %>
+    <tr>
+      <td><%= car.id %></td>
+      <td><%= car.license_plate %></td>
+      <td><%= car.brand %></td>
+      <td><%= car.model %></td>
+      <td><%= car.year %></td>
+    </tr>
+  <% end %>
+</table>
+
+<%= link_to 'Добавить автомобиль', new_car_path %>
