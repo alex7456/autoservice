@@ -18,5 +18,7 @@ Rails.application.routes.draw do
   resources :customers
   resources :services
   resources :appointments
-  root "cars#index"  # Главная страница
+  root "cars#index"
 end
+
+
