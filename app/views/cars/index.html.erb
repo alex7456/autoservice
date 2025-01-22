@@ -1,12 +1,13 @@
 <h1>Список автомобилей</h1>
 
-<table>
+<table border="1">
   <tr>
     <th>ID</th>
     <th>Номер</th>
     <th>Марка</th>
     <th>Модель</th>
     <th>Год</th>
+    <th>Действия</th>
   </tr>
   <% @cars.each do |car| %>
     <tr>
@@ -15,8 +16,13 @@
       <td><%= car.brand %></td>
       <td><%= car.model %></td>
       <td><%= car.year %></td>
+      <td>
+        <%= link_to "Редактировать", edit_car_path(car), class: "btn btn-warning" %> |
+        <%= link_to "Удалить", car, method: :delete, data: { confirm: "Вы уверены?" }, class: "btn btn-danger" %>
+      </td>
     </tr>
   <% end %>
 </table>
 
-<%= link_to 'Добавить автомобиль', new_car_path %>
+<%= link_to "Добавить автомобиль", new_car_path, class: "btn btn-success" %>
+<br>
