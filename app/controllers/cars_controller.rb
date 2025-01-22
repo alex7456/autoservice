@@ -36,8 +36,13 @@ class CarsController < ApplicationController
   def destroy
     @car = Car.find(params[:id])
     @car.destroy
-    redirect_to cars_path, notice: "Автомобиль удалён!"
+    respond_to do |format|
+      format.html { redirect_to cars_path, notice: "Автомобиль удалён!" }
+      format.json { head :no_content }
+    end
   end
+
+
 
   private
 
