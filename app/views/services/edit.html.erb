@@ -1,22 +1,7 @@
-<h1>Редактирование услуги</h1>
+<h1 class="text-center">Редактирование услуги</h1>
 
-<%= form_with(model: @service, local: true) do |form| %>
-  <div>
-    <%= form.label :name, "Название" %>
-    <%= form.text_field :name %>
-  </div>
+<div class="card p-4">
+  <%= render 'form' %>
+</div>
 
-  
-
-  <div>
-    <%= form.label :price, "Цена" %>
-    <%= form.number_field :price %>
-  </div>
-
-  <div>
-    <%= form.submit "Сохранить изменения", class: "btn btn-success" %>
-  </div>
-<% end %>
-
-<%= link_to "Назад к списку", services_path, class: "btn btn-primary" %>
-<%= link_to "На главную", root_path, class: "btn btn-secondary" %>
+<%= link_to "Назад к списку", services_path, class: "btn btn-primary mt-3" %>

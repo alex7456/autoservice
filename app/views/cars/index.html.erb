@@ -1,28 +1,35 @@
-<h1>Список автомобилей</h1>
+<div class="container mt-4">
+  <h2 class="text-center mb-4">Список автомобилей</h2>
 
-<table border="1">
-  <tr>
-    <th>ID</th>
-    <th>Номер</th>
-    <th>Марка</th>
-    <th>Модель</th>
-    <th>Год</th>
-    <th>Действия</th>
-  </tr>
-  <% @cars.each do |car| %>
+  <table class="table table-striped">
+    <thead class="table-dark">
     <tr>
-      <td><%= car.id %></td>
-      <td><%= car.license_plate %></td>
-      <td><%= car.brand %></td>
-      <td><%= car.model %></td>
-      <td><%= car.year %></td>
-      <td>
-        <%= link_to "Редактировать", edit_car_path(car), class: "btn btn-warning" %> |
-        <%= link_to "Удалить", car, method: :delete, data: { confirm: "Вы уверены?" }, class: "btn btn-danger" %>
-      </td>
+      <th>#</th>
+      <th>Номер</th>
+      <th>Марка</th>
+      <th>Модель</th>
+      <th>Год</th>
+      <th>Действия</th>
     </tr>
-  <% end %>
-</table>
+    </thead>
+    <tbody>
+    <% @cars.each_with_index do |car, index| %>
+      <tr>
+        <td><%= index + 1 %></td> <!-- Генерация порядкового номера -->
+        <td><%= car.license_plate %></td>
+        <td><%= car.brand %></td>
+        <td><%= car.model %></td>
+        <td><%= car.year %></td>
+        <td>
+          <a href="<%= edit_car_path(car) %>" class="btn btn-warning btn-sm">✏ Редактировать</a>
+          <%= button_to car_path(car), method: :delete, data: { turbo_confirm: "Вы уверены?" }, class: "btn btn-danger btn-sm" do %>
+            🗑 Удалить
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
 
-<%= link_to "Добавить автомобиль", new_car_path, class: "btn btn-success" %>
-<br>
+  <a href="<%= new_car_path %>" class="btn btn-success">➕ Добавить автомобиль</a>
+</div>

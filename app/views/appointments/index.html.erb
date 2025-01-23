@@ -1,29 +1,37 @@
-<h1>Список записей</h1>
+<div class="container mt-4">
+  <h2 class="text-center mb-4">Список записей</h2>
 
-<table border="1">
-  <tr>
-    <th>ID</th>
-    <th>Автомобиль</th>
-    <th>Клиент</th>
-    <th>Услуга</th>
-    <th>Дата записи</th>
-    <th>Статус</th>
-    <th>Действия</th>
-  </tr>
-  <% @appointments.each do |appointment| %>
+  <table class="table table-striped">
+    <thead class="table-dark">
     <tr>
-      <td><%= appointment.id %></td>
-      <td><%= appointment.car.license_plate if appointment.car %></td>
-      <td><%= appointment.customer.name if appointment.customer %></td>
-      <td><%= appointment.service.name if appointment.service %></td>
-      <td><%= appointment.appointment_date %></td>
-      <td><%= appointment.status %></td>
-      <td>
-        <%= link_to "Редактировать", edit_appointment_path(appointment) %> |
-        <%= link_to "Удалить", appointment, method: :delete, data: { confirm: "Вы уверены?" } %>
-      </td>
+      <th>#</th>
+      <th>Дата</th>
+      <th>Статус</th>
+      <th>Клиент</th>
+      <th>Автомобиль</th>
+      <th>Услуга</th>
+      <th>Действия</th>
     </tr>
-  <% end %>
-</table>
+    </thead>
+    <tbody>
+    <% @appointments.each_with_index do |appointment, index| %>
+      <tr>
+        <td><%= index + 1 %></td> <!-- Порядковый номер -->
+        <td><%= appointment.appointment_date.strftime('%d.%m.%Y %H:%M') %></td>
+        <td><%= appointment.status %></td>
+        <td><%= appointment.customer.name %></td>
+        <td><%= appointment.car.license_plate %> (<%= appointment.car.brand %> <%= appointment.car.model %>)</td>
+        <td><%= appointment.service.name %></td>
+        <td>
+          <a href="<%= edit_appointment_path(appointment) %>" class="btn btn-warning btn-sm">✏ Редактировать</a>
+          <%= button_to appointment_path(appointment), method: :delete, data: { turbo_confirm: "Вы уверены?" }, class: "btn btn-danger btn-sm" do %>
+            🗑 Удалить
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
 
-<%= link_to "Добавить запись", new_appointment_path %>
+  <a href="<%= new_appointment_path %>" class="btn btn-success">➕ Добавить запись</a>
+</div>

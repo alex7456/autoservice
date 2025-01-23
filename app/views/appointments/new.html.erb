@@ -1,29 +1,7 @@
 <h1>Добавить запись</h1>
 
-<%= form_with model: @appointment, local: true do |f| %>
-  <p>
-    <%= f.label :car_id, "Автомобиль" %><br>
-    <%= f.collection_select :car_id, Car.all, :id, :license_plate %>
-  </p>
+<div class="card p-4">
+  <%= render 'form' %>
+</div>
 
-  <p>
-    <%= f.label :customer_id, "Клиент" %><br>
-    <%= f.collection_select :customer_id, Customer.all, :id, :name %>
-  </p>
-
-  <p>
-    <%= f.label :service_id, "Услуга" %><br>
-    <%= f.collection_select :service_id, Service.all, :id, :name %>
-  </p>
-
-  <p>
-    <%= f.label :appointment_date, "Дата записи" %><br>
-    <%= f.datetime_field :appointment_date %>
-  </p>
-
-  <p>
-    <%= f.submit "Создать запись" %>
-  </p>
-<% end %>
-
-<%= link_to "Назад", appointments_path %>
+<%= link_to "Назад к списку", appointments_path, class: "btn btn-primary mt-3" %>

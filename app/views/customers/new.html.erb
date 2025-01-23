@@ -1,24 +1,7 @@
-<h1>Добавить клиента</h1>
+<h1 class="text-center">Добавить клиента</h1>
 
-<%= form_with model: @customer, local: true do |f| %>
-  <p>
-    <%= f.label :name, "Имя клиента" %><br>
-    <%= f.text_field :name %>
-  </p>
+<div class="card p-4">
+  <%= render 'form' %>
+</div>
 
-  <p>
-    <%= f.label :phone, "Телефон" %><br>
-    <%= f.text_field :phone %>
-  </p>
-
-  <p>
-    <%= f.label :email, "Email" %><br>
-    <%= f.email_field :email %>
-  </p>
-
-  <p>
-    <%= f.submit "Добавить клиента" %>
-  </p>
-<% end %>
-
-<%= link_to "Назад", customers_path %>
+<%= link_to "Назад", customers_path, class: "btn btn-primary mt-3" %>

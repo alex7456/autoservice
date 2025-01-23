@@ -1,25 +1,33 @@
-<h1>Список клиентов</h1>
+<div class="container mt-4">
+  <h2 class="text-center mb-4">Список клиентов</h2>
 
-<table border="1">
-  <tr>
-    <th>ID</th>
-    <th>Имя</th>
-    <th>Телефон</th>
-    <th>Email</th>
-    <th>Действия</th>
-  </tr>
-  <% @customers.each do |customer| %>
+  <table class="table table-striped">
+    <thead class="table-dark">
     <tr>
-      <td><%= customer.id %></td>
-      <td><%= customer.name %></td>
-      <td><%= customer.phone %></td>
-      <td><%= customer.email %></td>
-      <td>
-        <%= link_to "Редактировать", edit_customer_path(customer) %> |
-        <%= link_to "Удалить", customer, method: :delete, data: { confirm: "Вы уверены?" } %>
-      </td>
+      <th>#</th>
+      <th>Имя</th>
+      <th>Телефон</th>
+      <th>Email</th>
+      <th>Действия</th>
     </tr>
-  <% end %>
-</table>
+    </thead>
+    <tbody>
+    <% @customers.each_with_index do |customer, index| %>
+      <tr>
+        <td><%= index + 1 %></td> <!-- Порядковый номер -->
+        <td><%= customer.name %></td>
+        <td><%= customer.phone %></td>
+        <td><%= customer.email %></td>
+        <td>
+          <a href="<%= edit_customer_path(customer) %>" class="btn btn-warning btn-sm">✏ Редактировать</a>
+          <%= button_to customer_path(customer), method: :delete, data: { turbo_confirm: "Вы уверены?" }, class: "btn btn-danger btn-sm" do %>
+            🗑 Удалить
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
 
-<%= link_to "Добавить клиента", new_customer_path %>
+  <a href="<%= new_customer_path %>" class="btn btn-success">➕ Добавить клиента</a>
+</div>

@@ -1,0 +1,26 @@
+<% if @service.errors.any? %>
+  <div class="alert alert-danger">
+    <h4>Ошибки:</h4>
+    <ul>
+      <% @service.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<%= form_with(model: @service, local: true) do |form| %>
+  <div class="mb-3">
+    <%= form.label :name, "Название услуги", class: "form-label" %>
+    <%= form.text_field :name, class: "form-control" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :price, "Цена", class: "form-label" %>
+    <%= form.number_field :price, class: "form-control" %>
+  </div>
+
+  <div>
+    <%= form.submit "Сохранить изменения", class: "btn btn-success" %>
+  </div>
+<% end %>

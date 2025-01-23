@@ -1,10 +1,10 @@
-<h1>Добро пожаловать в Автосервис</h1>
+<div class="container text-center mt-5">
+  <h1 class="mb-4">Добро пожаловать в Автосервис</h1>
 
-<p>Выберите раздел:</p>
-
-<ul>
-  <li><%= link_to "Автомобили", cars_path %></li>
-  <li><%= link_to "Клиенты", customers_path %></li>
-  <li><%= link_to "Услуги", services_path %></li>
-  <li><%= link_to "Записи", appointments_path %></li>
-</ul>
+  <div class="list-group">
+    <a href="<%= cars_path %>" class="list-group-item list-group-item-action">🚗 Автомобили</a>
+    <a href="<%= customers_path %>" class="list-group-item list-group-item-action">👤 Клиенты</a>
+    <a href="<%= services_path %>" class="list-group-item list-group-item-action">🛠 Услуги</a>
+    <a href="<%= appointments_path %>" class="list-group-item list-group-item-action">📅 Записи</a>
+  </div>
+</div>

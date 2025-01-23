@@ -1,23 +1,31 @@
-<h1>Список услуг</h1>
+<div class="container mt-4">
+  <h2 class="text-center mb-4">Список услуг</h2>
 
-<table border="1">
-  <tr>
-    <th>ID</th>
-    <th>Название</th>
-    <th>Цена</th>
-    <th>Действия</th>
-  </tr>
-  <% @services.each do |service| %>
+  <table class="table table-striped">
+    <thead class="table-dark">
     <tr>
-      <td><%= service.id %></td>
-      <td><%= service.name %></td>
-      <td><%= service.price %></td>
-      <td>
-        <%= link_to "Редактировать", edit_service_path(service) %> |
-        <%= link_to "Удалить", service, method: :delete, data: { confirm: "Вы уверены?" } %>
-      </td>
+      <th>#</th>
+      <th>Название</th>
+      <th>Цена</th>
+      <th>Действия</th>
     </tr>
-  <% end %>
-</table>
+    </thead>
+    <tbody>
+    <% @services.each_with_index do |service, index| %>
+      <tr>
+        <td><%= index + 1 %></td> <!-- Порядковый номер -->
+        <td><%= service.name %></td>
+        <td><%= number_to_currency(service.price, unit: "₽") %></td>
+        <td>
+          <a href="<%= edit_service_path(service) %>" class="btn btn-warning btn-sm">✏ Редактировать</a>
+          <%= button_to service_path(service), method: :delete, data: { turbo_confirm: "Вы уверены?" }, class: "btn btn-danger btn-sm" do %>
+            🗑 Удалить
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
 
-<%= link_to "Добавить услугу", new_service_path %>
+  <a href="<%= new_service_path %>" class="btn btn-success">➕ Добавить услугу</a>
+</div>

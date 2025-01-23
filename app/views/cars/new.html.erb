@@ -1,29 +1,5 @@
 <h1>Добавить автомобиль</h1>
 
-<%= form_with model: @car, local: true do |f| %>
-  <p>
-    <%= f.label :license_plate, "Номерной знак" %><br>
-    <%= f.text_field :license_plate %>
-  </p>
+<%= render 'form' %>
 
-  <p>
-    <%= f.label :brand, "Марка" %><br>
-    <%= f.text_field :brand %>
-  </p>
-
-  <p>
-    <%= f.label :model, "Модель" %><br>
-    <%= f.text_field :model %>
-  </p>
-
-  <p>
-    <%= f.label :year, "Год выпуска" %><br>
-    <%= f.number_field :year %>
-  </p>
-
-  <p>
-    <%= f.submit "Добавить автомобиль" %>
-  </p>
-<% end %>
-
-<%= link_to "Назад к списку", cars_path %>
+<%= link_to "Назад к списку", cars_path, class: "btn btn-primary mt-3" %>

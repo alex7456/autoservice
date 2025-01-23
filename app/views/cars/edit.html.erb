@@ -1,30 +1,5 @@
-<h1>Редактирование автомобиля</h1>
+<h1 class="text-center">Редактирование автомобиля</h1>
 
-<%= form_with(model: @car, local: true) do |form| %>
-  <div>
-    <%= form.label :license_plate, "Номер" %>
-    <%= form.text_field :license_plate %>
-  </div>
+<%= render 'form' %>
 
-  <div>
-    <%= form.label :brand, "Марка" %>
-    <%= form.text_field :brand %>
-  </div>
-
-  <div>
-    <%= form.label :model, "Модель" %>
-    <%= form.text_field :model %>
-  </div>
-
-  <div>
-    <%= form.label :year, "Год выпуска" %>
-    <%= form.number_field :year %>
-  </div>
-
-  <div>
-    <%= form.submit "Сохранить изменения", class: "btn btn-success" %>
-  </div>
-<% end %>
-
-<br>
-<%= link_to "Назад к списку", cars_path, class: "btn btn-primary" %>
+<%= link_to "Назад к списку", cars_path, class: "btn btn-primary mt-3" %>
