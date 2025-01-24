@@ -1,14 +1,12 @@
 class BaseController < ApplicationController
-  before_action :set_base, only: %i[show edit update destroy]
+  before_action :set_base, only: %i[edit update destroy]
 
   def index
-    @bases = base_class.all
+    @bases = base_class.order(:id) # Сортировка по ID (или любому другому полю)
     instance_variable_set("@#{controller_name}", @bases)
   end
 
-  def show
-    instance_variable_set("@#{controller_name.singularize}", @base)
-  end
+
 
   def new
     @base = base_class.new
