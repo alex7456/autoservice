@@ -11,5 +11,6 @@ class Car < ApplicationRecord
     less_than_or_equal_to: Date.today.year,
     message: "должен быть целым числом от 1900 до #{Date.today.year}"
   }
+  validates :license_plate, uniqueness: { scope: [:brand, :model], message: "Автомобиль с таким номером, маркой и моделью уже существует" }
 
 end
